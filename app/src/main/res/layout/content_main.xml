@@ -84,7 +84,7 @@
         android:layout_width="80dp"
         android:layout_height="56dp"
         android:layout_marginStart="24dp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintStart_toEndOf="@+id/username"
         app:layout_constraintTop_toTopOf="@+id/username"
         app:srcCompat="@drawable/correct" />
@@ -97,6 +97,7 @@
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/password"
         app:layout_constraintTop_toTopOf="@+id/password"
-        app:srcCompat="@drawable/wrong" />
+        app:srcCompat="@drawable/wrong"
+        tools:visibility="gone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,24 +17,21 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
-
     private EditText username;
     private EditText password;
     private ImageView resultusername;
     private ImageView resultpassword;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         find();
         result();
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,9 +41,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
     private void find() {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
@@ -58,28 +52,40 @@ public class MainActivity extends AppCompatActivity {
 
     public void check(View view){
 
-        if(username.length()<4){
-            //resultusername.setAlpha(0.1f);
-            resultusername.setVisibility(View.VISIBLE);
-            resultusername.setImageResource(R.drawable.wrong);
-            new AlertDialog.Builder(MainActivity.this)
-                    .setMessage("Your name have to be larger than 4 letters")
-                    .setPositiveButton("OK",null)
-                    .show();
+            if (username.length() < 4) {
+                resultusername.setImageResource(R.drawable.wrong);
+                resultusername.setVisibility(View.VISIBLE);
+                resultusername.animate().alpha(0.0f).setDuration(1200);
+                // resultusername.setAlpha(0.1f);
+                new AlertDialog.Builder(MainActivity.this)
+                        .setMessage("Your name have to be larger than 4 letters")
+                        .setPositiveButton("OK", null)
+                        .show();
 
-        }
-        if (password.length()<6){
-            //resultusername.setAlpha(0.1f);
-            resultpassword.setVisibility(View.VISIBLE);
-            resultpassword.setImageResource(R.drawable.wrong);
-            new AlertDialog.Builder(MainActivity.this)
-                    .setMessage("Your password have to be larger than 6 letters")
-                    .setPositiveButton("ok",null)
-                    .show();
-        }
+            } else {
+                resultusername.setImageResource(R.drawable.correct);
+                resultusername.setVisibility(View.VISIBLE);
+                resultusername.animate().alpha(0.0f).setDuration(1200);
+                // resultusername.setAlpha(0.1f);
 
+            }
+            if (password.length() < 6) {
+                //resultusername.setAlpha(0.1f);
+                resultpassword.setImageResource(R.drawable.wrong);
+                resultpassword.setVisibility(View.VISIBLE);
+                resultpassword.animate().alpha(0.0f).setDuration(1200);
+                new AlertDialog.Builder(MainActivity.this)
+                        .setMessage("Your password have to be larger than 6 letters")
+                        .setPositiveButton("ok", null)
+                        .show();
+            } else {
+                resultusername.setImageResource(R.drawable.correct);
+                resultusername.setVisibility(View.VISIBLE);
+                resultpassword.animate().alpha(0.0f).setDuration(1200);
+                // resultusername.setAlpha(0.1f);
 
-
+            }
+        
     }
 
     @Override
